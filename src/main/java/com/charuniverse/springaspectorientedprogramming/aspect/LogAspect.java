@@ -50,4 +50,25 @@ public class LogAspect {
         String value = (String) joinPoint.getArgs()[0];
         log.info("Execute method with parameter: {}", value);
     }
+
+    @Pointcut("execution(* com.charuniverse.springaspectorientedprogramming.service.*.*(..))")
+    public void pointcutServicePackage() {
+    }
+
+    @Pointcut("bean(*Service)")
+    public void pointcutServiceBean() {
+    }
+
+    @Pointcut("execution(public * *(..))")
+    public void pointcutPublicMethod() {
+    }
+
+    @Pointcut("pointcutServicePackage() && pointcutServiceBean() && pointcutPublicMethod()")
+    public void pointcutMethodForService() {
+    }
+
+    @Before("pointcutMethodForService()")
+    public void logAllServiceMethod() {
+        log.info("Log for all service methods");
+    }
 }
