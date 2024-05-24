@@ -8,12 +8,17 @@ import org.springframework.stereotype.Component;
 public class HelloService {
 
     public String hello(String name) {
-        log.info("Called HelloService.hello() with name: {}", name);
+        log.info("Called HelloService.hello()");
         return "Hello " + name;
     }
 
+    public String hello(String firstName, String lastName) {
+        log.info("Called HelloService.hello()");
+        return "Hello " + firstName + " " + lastName;
+    }
+
     public String bye(String name) {
-        log.info("Called HelloService.bye() with name: {}", name);
+        log.info("Called HelloService.bye()");
         return "Bye " + name;
     }
 

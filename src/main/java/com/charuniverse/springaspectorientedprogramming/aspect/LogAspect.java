@@ -45,11 +45,11 @@ public class LogAspect {
     public void pointcutHelloServiceStringParam() {
     }
 
-    @Before("pointcutHelloServiceStringParam()")
-    public void beforeHelloServiceStringParam(JoinPoint joinPoint) {
-        String value = (String) joinPoint.getArgs()[0];
-        log.info("Execute method with parameter: {}", value);
-    }
+//    @Before("pointcutHelloServiceStringParam()")
+//    public void beforeHelloServiceStringParam(JoinPoint joinPoint) {
+//        String value = (String) joinPoint.getArgs()[0];
+//        log.info("Execute method with parameter: {}", value);
+//    }
 
     @Pointcut("execution(* com.charuniverse.springaspectorientedprogramming.service.*.*(..))")
     public void pointcutServicePackage() {
@@ -70,5 +70,10 @@ public class LogAspect {
     @Before("pointcutMethodForService()")
     public void logAllServiceMethod() {
         log.info("Log for all service methods");
+    }
+
+    @Before("pointcutHelloServiceStringParam() && args(name)")
+    public void logStringParameter(String name) {
+        log.info("Execute method with parameter: {}", name);
     }
 }
