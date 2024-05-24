@@ -17,4 +17,8 @@ public class HelloService {
         return "Bye " + name;
     }
 
+    public void test() {
+        log.info("Called HelloService.test()");
+    }
+
 }
